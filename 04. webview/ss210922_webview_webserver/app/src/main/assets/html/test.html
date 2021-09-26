@@ -1,0 +1,32 @@
+<!-- assets/html/test.html -->
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Context-Type"
+              content="text/html; charset=URF-8">
+        <script>
+            // 앱에서 받은 메시지를 처리하는 코드
+            // arg :: editText에 입력한 값이 들어옴
+            function setMessage(arg) {
+                // id가 fromApp인 태그에 값이 들어감 :: 현재 소스에서는 div
+                document.getElementById("fromApp").innerHTML=arg;
+            }
+
+            // 앱으로 메시지를 전달하는 코드
+            function sendMessage(arg) {
+                // window : 안드로이드
+                // window.별칭(브릿지클래스이름).안드로이드method
+                window.android.setMessage(arg);
+            }
+        </script>
+    </head>
+
+    <body>
+        <h2>웹뷰와의 통신</h2>
+        <hr>앱에서 받은 메시지 : <div id="fromApp"> </div>
+        <hr>
+        <input id="toApp" value="App으로 전송">
+        <input type="button" value="전송"
+                onclick="sendMessage(document.getElementById('toApp').value)">
+    </body>
+</html>
