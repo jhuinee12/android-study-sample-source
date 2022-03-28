@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "429349643976",
+    "project_id": "gentle-impulse-343002",
+    "storage_bucket": "gentle-impulse-343002.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:429349643976:android:4a93f7fb388e685d9a67fd",
+        "android_client_info": {
+          "package_name": "com.example.ks20220302_googlefitapi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "429349643976-h1v19vdn5jibvhvnd1tcq23857hge9r7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ks20220302_googlefitapi",
+            "certificate_hash": "874d54676e66ef0acb9f050d178ed89127bf70bf"
+          }
+        },
+        {
+          "client_id": "429349643976-t2nhar06kak7sji7qi38dnpqqkhd7us8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBNtzo6YCjQGBnEimwJhjRswd332Uv1Y5E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "429349643976-t2nhar06kak7sji7qi38dnpqqkhd7us8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
