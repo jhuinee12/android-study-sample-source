@@ -22,9 +22,9 @@ class RecordingFragment : Fragment() {
 
         subscribe()
 
-        binding.btn01.setOnClickListener { subscribe()              }
-        binding.btn02.setOnClickListener { dumpSubscriptionsList()  }
-        binding.btn03.setOnClickListener { cancelSubscription()     }
+        binding.btnLiveLocation.setOnClickListener { subscribe()              }
+        binding.btnLiveStepCount.setOnClickListener { dumpSubscriptionsList()  }
+        binding.btnWeight.setOnClickListener { cancelSubscription()     }
 
         return binding.root
     }

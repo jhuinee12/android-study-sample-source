@@ -48,15 +48,15 @@ class MainActivity : AppCompatActivity() {
 
         checkPermissionsAndRun()
 
-        binding.btn01.setOnClickListener {  // 01. 센서 데이터 감지
+        binding.btnLiveLocation.setOnClickListener {  // 01. 센서 데이터 감지
             supportFragmentManager.beginTransaction().replace(R.id.layout_frame, SensorFragment()).commit()
         }
 
-        binding.btn02.setOnClickListener {   // 02. 데이터 기록
+        binding.btnLiveStepCount.setOnClickListener {   // 02. 데이터 기록
             supportFragmentManager.beginTransaction().replace(R.id.layout_frame, RecordingFragment()).commit()
         }
 
-        binding.btn03.setOnClickListener {   // 03. 과거 데이터
+        binding.btnWeight.setOnClickListener {   // 03. 과거 데이터
             supportFragmentManager.beginTransaction().replace(R.id.layout_frame, HistoryFragment()).commit()
         }
     }

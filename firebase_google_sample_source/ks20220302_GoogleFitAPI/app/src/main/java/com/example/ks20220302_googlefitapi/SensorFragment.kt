@@ -29,14 +29,14 @@ class SensorFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         mBinding = FragmentSensorBinding.inflate(inflater, container, false)
 
-        binding.btn01.setOnClickListener {
+        binding.btnLiveLocation.setOnClickListener {
             if (dataPointListener != null) {
                 unregisterFitnessDataListener()
             }
             findFitnessDataSources(DataType.TYPE_LOCATION_SAMPLE)
             binding.tvRunData.text = ""
         }
-        binding.btn02.setOnClickListener {
+        binding.btnLiveStepCount.setOnClickListener {
             if (dataPointListener != null) {
                 unregisterFitnessDataListener()
             }

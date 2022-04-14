@@ -39,9 +39,9 @@ class HistoryFragment : Fragment() {
     ): View? {
         mBinding = FragmentHistoryBinding.inflate(inflater, container, false)
 
-        binding.btn01.setOnClickListener { insertAndReadData() }
-        binding.btn02.setOnClickListener { updateAndReadData() }
-        binding.btn03.setOnClickListener { deleteData() }
+        binding.btnLiveLocation.setOnClickListener { insertAndReadData() }
+        binding.btnLiveStepCount.setOnClickListener { updateAndReadData() }
+        binding.btnWeight.setOnClickListener { deleteData() }
 
         return binding.root
     }

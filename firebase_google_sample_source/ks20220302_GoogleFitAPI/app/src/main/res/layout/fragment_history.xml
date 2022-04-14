@@ -17,21 +17,21 @@
         android:gravity="center">
 
         <Button
-            android:id="@+id/btn01"
+            android:id="@+id/btnLiveLocation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="데이터 삽입"
             android:backgroundTint="@color/teal_200"/>
 
         <Button
-            android:id="@+id/btn02"
+            android:id="@+id/btnLiveStepCount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="데이터 수정"
             android:backgroundTint="@color/teal_200"/>
 
         <Button
-            android:id="@+id/btn03"
+            android:id="@+id/btnWeight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="데이터 삭제"
