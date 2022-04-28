@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.testlogin.snslogin">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.android.vending.BILLING" />
+
+    <queries>
+        <package android:name="com.kakao.talk" />
+    </queries>
+
+    <application
+        android:name=".adapter.KakaoApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.SNSLogin"
+        android:usesCleartextTraffic="true"
+        tools:ignore="Instantiatable">
+        <activity android:name=".activity.InsertActivity" />
+        <activity android:name=".activity.BoardActivity" /> <!-- kakao sdk v1 -->
+        <!--
+        <meta-data
+            android:name="com.kakao.sdk.AppKey"
+            android:value="0a7897983e0a0efaacad8f23437ba7a9" />
+        -->
+        <activity android:name=".adapter.KakaoApplication">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="kakaolink"
+                    android:scheme="kakao0a7897983e0a0efaacad8f23437ba7a9" />
+                <data
+                    android:host="oauth"
+                    android:scheme="kakao0a7897983e0a0efaacad8f23437ba7a9" />
+            </intent-filter>
+        </activity>
+        <!--
+ 페이스북 : meta-data 요소, Facebook에 대한 활동,
+                Chrome 맞춤 탭에 대한 활동 및 인텐트 필터를 application 요소
+        -->
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="@string/fb_login_protocol_scheme" />
+            </intent-filter>
+        </activity> <!-- 페이스북 -->
+        <activity android:name=".activity.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardUseCompatPadding="true"
+    android:layout_margin="2dp"
+    android:orientation="horizontal"
+    app:cardCornerRadius="5dp"
+    android:elevation="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="5dp">
+
+        <TextView
+            android:id="@+id/txt_rcy_qa_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:text="질문 제목"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/txt_rcy_qa_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="질문 내용"
+            android:textSize="15dp"
+            android:layout_margin="10dp"/>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

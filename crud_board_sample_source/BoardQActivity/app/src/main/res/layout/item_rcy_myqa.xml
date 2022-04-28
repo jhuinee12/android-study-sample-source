@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardUseCompatPadding="true"
+    android:layout_margin="2dp"
+    android:orientation="horizontal"
+    app:cardCornerRadius="5dp"
+    android:elevation="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="5dp">
+
+    <LinearLayout
+        android:id="@+id/li_myqa_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="5dp">
+
+        <TextView
+            android:id="@+id/txt_rcy_myqa_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:text="문의 제목"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/txt_rcy_myqa_desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="문의 내용"
+            android:textSize="15dp"
+            android:layout_margin="5dp"/>
+    </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/li_myqa_expand"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:background="#918E8E"/>
+
+            <TextView
+                android:id="@+id/txt_rcy_myqa_comment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="답변 내용"
+                android:textSize="15dp"
+                android:layout_margin="10dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right">
+
+                <Button
+                    android:id="@+id/btn_myqa_comment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="답변 등록"/>
+
+                <Button
+                    android:id="@+id/btn_myqa_del"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="문의 삭제"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

@@ -2,3 +2,14 @@
 05. jetpack/livedata_viewmodel_tutorial/.idea/
 05. jetpack/navigation_graph_tutorial/.idea/
 jetpack_sample_source/dataStoreSampleApp/.idea/
+crud_board_sample_source/BoardActivity/.gradle/
+crud_board_sample_source/BoardActivity/.idea/
+crud_board_sample_source/BoardActivity/app/build/
+crud_board_sample_source/BoardQActivity/.idea/
+crud_board_sample_source/BoardQActivity/app/build/
+pay_sample_source/tossPayments/.gradle/
+pay_sample_source/tossPayments/.idea/
+pay_sample_source/tossPayments/app/build/
+sns_sample_source/snsLogin_git/.gradle/
+sns_sample_source/snsLogin_git/.idea/
+sns_sample_source/snsLogin_git/app/build/

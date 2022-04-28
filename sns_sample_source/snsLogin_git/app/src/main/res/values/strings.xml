@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">SNSLogin</string>
+    <string name="facebook_app_id">1298824287185705</string>
+    <string name="fb_login_protocol_scheme">4f6a4a900e315c91f7038140c7c393f2</string>
+</resources>

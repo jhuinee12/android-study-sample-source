@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.InsertActivity">
+
+    <LinearLayout
+        android:id="@+id/li_titleLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="제목 : "
+            android:textSize="20dp"
+            android:layout_gravity="center_vertical" />
+
+        <EditText
+            android:id="@+id/edt_question_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:hint="문의 제목을 입력해주세요."/>
+
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/edt_question_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lines="15"
+        android:textSize="20dp"
+        android:hint="문의 내용을 입력하여 주세요."
+        android:layout_margin="10dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/style_desc"/>
+
+    <Button
+        android:id="@+id/btn_question_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:text="문의 등록"/>
+</RelativeLayout>

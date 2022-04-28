@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragment.QAFragment">
+
+    <Button
+        android:id="@+id/btn_goto_qa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="문의하기"/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="나의 문의 내역"
+        android:textSize="20dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:gravity="center"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcy_myqa"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>
