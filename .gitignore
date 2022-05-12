@@ -13,3 +13,13 @@ pay_sample_source/tossPayments/app/build/
 sns_sample_source/snsLogin_git/.gradle/
 sns_sample_source/snsLogin_git/.idea/
 sns_sample_source/snsLogin_git/app/build/
+firebase_google_sample_source/DialogFlowSampleApp/gradlew
+firebase_google_sample_source/DialogFlowSampleApp/gradlew.bat
+firebase_google_sample_source/DialogFlowSampleApp/settings.gradle
+firebase_google_sample_source/DialogFlowSampleApp/.gradle/
+firebase_google_sample_source/DialogFlowSampleApp/.idea/
+firebase_google_sample_source/DialogFlowSampleApp/local.properties
+firebase_google_sample_source/DialogFlowSampleApp/app/.gitignore
+firebase_google_sample_source/DialogFlowSampleApp/app/google-services.json
+firebase_google_sample_source/DialogFlowSampleApp/app/proguard-rules.pro
+firebase_google_sample_source/DialogFlowSampleApp/app/src/androidTest/
