@@ -2,13 +2,19 @@ package com.example.ks20220302_googlefitapi
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.example.ks20220302_googlefitapi.databinding.FragmentRecordingBinding
+import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.fitness.Fitness
 import com.google.android.gms.fitness.data.DataType
+import com.google.android.gms.fitness.request.DataReadRequest
+import java.text.SimpleDateFormat
+import java.util.*
+import java.util.concurrent.TimeUnit
+
 
 const val RECORD_TAG = "BasicRecordingApi"
 
@@ -22,9 +28,10 @@ class RecordingFragment : Fragment() {
 
         subscribe()
 
-        binding.btnLiveLocation.setOnClickListener { subscribe()              }
-        binding.btnLiveStepCount.setOnClickListener { dumpSubscriptionsList()  }
-        binding.btnWeight.setOnClickListener { cancelSubscription()     }
+        binding.btnLiveLocation.setOnClickListener { subscribe() }
+        binding.btnLiveStepCount.setOnClickListener { dumpSubscriptionsList() }
+        binding.btnCancel.setOnClickListener { cancelSubscription() }
+        binding.btnRead.setOnClickListener { readData() }
 
         return binding.root
     }
@@ -62,8 +69,8 @@ class RecordingFragment : Fragment() {
      */
     private fun dumpSubscriptionsList() {
         Fitness.getRecordingClient(requireContext(), (activity as MainActivity).getGoogleAccount())
-            //.listSubscriptions(DataType.TYPE_STEP_COUNT_DELTA)
-            .listSubscriptions(DataType.TYPE_CALORIES_EXPENDED)
+            .listSubscriptions(DataType.TYPE_STEP_COUNT_DELTA)
+//            .listSubscriptions(DataType.TYPE_CALORIES_EXPENDED)
             .addOnSuccessListener { subscriptions ->
                 var msg = "dumpSubscriptionsList() 호출"
                 for (subscription in subscriptions) {
@@ -86,11 +93,13 @@ class RecordingFragment : Fragment() {
      * 구독 취소
      */
     private fun cancelSubscription() {
-        val dataTypeStr = DataType.TYPE_CALORIES_EXPENDED.toString()
+//        val dataTypeStr = DataType.TYPE_CALORIES_EXPENDED.toString()
+        val dataTypeStr = DataType.TYPE_STEP_COUNT_DELTA.toString()
         Log.i(RECORD_TAG, "Unsubscribing from data type: $dataTypeStr")
 
         Fitness.getRecordingClient(requireContext(), (activity as MainActivity).getGoogleAccount())
-            .unsubscribe(DataType.TYPE_CALORIES_EXPENDED)
+//            .unsubscribe(DataType.TYPE_CALORIES_EXPENDED)
+            .unsubscribe(DataType.TYPE_STEP_COUNT_DELTA)
             .addOnSuccessListener {
                 val msg = "구독 취소 성공 - data type: $dataTypeStr"
                 Log.i(RECORD_TAG, msg)
@@ -102,5 +111,56 @@ class RecordingFragment : Fragment() {
                 binding.titleTextView.text = msg
             }
 
+    }
+
+    private fun readData() {
+        val cal: Calendar = Calendar.getInstance()
+        val now: Date = Calendar.getInstance().time
+        cal.time = now
+
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+
+        // 시작 시간
+        cal.set(
+            cal.get(Calendar.YEAR), cal.get(Calendar.MONTH),
+            cal.get(Calendar.DAY_OF_MONTH), 6, 0, 0
+        )
+        val startTime: Long = cal.timeInMillis
+
+        // 종료 시간
+        cal.set(
+            cal.get(Calendar.YEAR), cal.get(Calendar.MONTH),
+            cal.get(Calendar.DAY_OF_MONTH), 22, 0, 0
+        )
+        val endTime: Long = cal.timeInMillis
+
+        Fitness.getHistoryClient(
+            requireContext(),
+            GoogleSignIn.getLastSignedInAccount(requireContext())!!
+        )
+            .readData(
+                DataReadRequest.Builder()
+                    .read(DataType.TYPE_STEP_COUNT_DELTA) // Raw 걸음 수
+                    .setTimeRange(startTime, endTime, TimeUnit.MILLISECONDS)
+                    .build()
+            )
+            .addOnSuccessListener { response ->
+                val dataSet =
+                    response.getDataSet(DataType.TYPE_STEP_COUNT_DELTA)
+                Log.i(RECORD_TAG, "Data returned for Data type: " + dataSet.dataType.name)
+                var readDataText = ""
+                for (dp in dataSet.dataPoints) {
+                    readDataText += "\nData point:\tType: " + dp.dataType.name +
+                        "\nStart: " + dateFormat.format(dp.getStartTime(TimeUnit.MILLISECONDS)) +
+                        "\nEnd: " + dateFormat.format(dp.getEndTime(TimeUnit.MILLISECONDS))
+                    Log.i(RECORD_TAG, readDataText)
+                    binding.titleTextView.text = readDataText
+                    for (field in dp.dataType.fields) {
+                        Log.i( RECORD_TAG, "\tField: " + field.name + " Value: " + dp.getValue(field) )
+                        readDataText += "\nField: " + field.name + " Value: " + dp.getValue(field)
+                    }
+                    binding.descTextView.text = readDataText
+                }
+            }
     }
 }

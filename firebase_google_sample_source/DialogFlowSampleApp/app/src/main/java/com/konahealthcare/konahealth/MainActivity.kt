@@ -95,6 +95,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     private fun updateUI(response: DetectIntentResponse) {
         Log.d("TAG", "updateUI")
         val botReply: String = response.queryResult.fulfillmentText
+        val request_intent = response.queryResult.intent.displayName
+        val locale = response.queryResult.languageCode
         if (botReply.isNotEmpty()) {
             binding.outputIntent.text = botReply
         } else {

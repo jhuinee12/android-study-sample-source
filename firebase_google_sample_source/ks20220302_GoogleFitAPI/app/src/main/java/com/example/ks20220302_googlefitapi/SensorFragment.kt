@@ -25,6 +25,8 @@ class SensorFragment : Fragment() {
 
     private var dataPointListener: OnDataPointListener? = null
 
+    var stepCount = 0
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         mBinding = FragmentSensorBinding.inflate(inflater, container, false)
@@ -98,8 +100,14 @@ class SensorFragment : Fragment() {
                 Log.i(SENSOR_TAG, "Detected DataPoint value: $value")
                 textAdd += "${field.name}: $value\n"
             }
-            binding.tvRunData.text = textAdd
-            Log.e(SENSOR_TAG, "tv : $textAdd")
+
+            if (dataType == DataType.TYPE_STEP_COUNT_DELTA) {
+                binding.tvRunData.text = (++stepCount).toString()
+                Log.e(SENSOR_TAG, "tv : $stepCount")
+            } else {
+                binding.tvRunData.text = textAdd
+                Log.e(SENSOR_TAG, "tv : $textAdd")
+            }
 
             binding.tvRun.text = "센서 데이터 감지 중..."
             binding.tvRun.setTextColor(Color.BLACK)
@@ -134,6 +142,7 @@ class SensorFragment : Fragment() {
             .addOnCompleteListener { task ->
                 if (task.isSuccessful && task.result!!) {
                     Log.i(SENSOR_TAG, "리스너 지워짐")
+                    stepCount = 0
                 } else {
                     Log.i(SENSOR_TAG, "리스너 지워지지 않음")
                 }
