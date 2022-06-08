@@ -25,3 +25,4 @@ firebase_google_sample_source/DialogFlowSampleApp/app/proguard-rules.pro
 firebase_google_sample_source/DialogFlowSampleApp/app/src/androidTest/
 firebase_google_sample_source/DialogFlowSampleApp/app/src/main/res/raw/credential.json
 firebase_google_sample_source/ks20220302_GoogleFitAPI/.idea/
+jetpack_sample_source/.idea/
