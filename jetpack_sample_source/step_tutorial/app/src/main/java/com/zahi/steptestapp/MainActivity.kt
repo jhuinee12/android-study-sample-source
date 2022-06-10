@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
     override fun onSensorChanged(event: SensorEvent) {
         if (event.sensor.type == Sensor.TYPE_STEP_COUNTER) {
-            binding.stepCount.text = event.values[0].toString()
+            binding.stepCount.text = event.values[0].toInt().toString()
         }
     }
 
