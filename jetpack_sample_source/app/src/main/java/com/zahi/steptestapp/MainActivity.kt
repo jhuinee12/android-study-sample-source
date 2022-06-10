@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         }
     }
 
+    // 센서의 정확도가 변경되면 호출
     override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
     }
 

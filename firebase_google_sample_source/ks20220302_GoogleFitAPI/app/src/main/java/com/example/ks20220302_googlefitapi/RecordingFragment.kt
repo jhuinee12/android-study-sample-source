@@ -114,6 +114,8 @@ class RecordingFragment : Fragment() {
     }
 
     private fun readData() {
+        var stepCount = 0
+
         val cal: Calendar = Calendar.getInstance()
         val now: Date = Calendar.getInstance().time
         cal.time = now
@@ -154,12 +156,14 @@ class RecordingFragment : Fragment() {
                         "\nStart: " + dateFormat.format(dp.getStartTime(TimeUnit.MILLISECONDS)) +
                         "\nEnd: " + dateFormat.format(dp.getEndTime(TimeUnit.MILLISECONDS))
                     Log.i(RECORD_TAG, readDataText)
-                    binding.titleTextView.text = readDataText
                     for (field in dp.dataType.fields) {
-                        Log.i( RECORD_TAG, "\tField: " + field.name + " Value: " + dp.getValue(field) )
-                        readDataText += "\nField: " + field.name + " Value: " + dp.getValue(field)
+                        val fieldValue = dp.getValue(field).toString().toInt()
+                        stepCount += fieldValue
+                        Log.i( RECORD_TAG, "\tField: " + field.name + " Value: " + fieldValue )
+                        readDataText += "\nField: " + field.name + " Value: " + fieldValue + "\n\n"
                     }
                     binding.descTextView.text = readDataText
+                    binding.titleTextView.text = "$stepCount 걸음"
                 }
             }
     }
