@@ -15,6 +15,7 @@
     <!-- Google Play에 게시하는 경우, 타겟팅 가능 -->
     <uses-feature android:name="android.hardware.sensor.stepcounter" />
 
+
     <application
         android:allowBackup="false"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -36,6 +37,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service android:name=".StepForegroundService"/>
     </application>
 
 </manifest>

@@ -3,14 +3,22 @@ package com.zahi.steptestapp
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
+import android.provider.Settings
+import android.util.Log
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import com.tbruyelle.rxpermissions3.Permission
 import com.zahi.steptestapp.databinding.ActivityMainBinding
 import com.tbruyelle.rxpermissions3.RxPermissions
+import java.security.AccessController.checkPermission
 
 class MainActivity : AppCompatActivity(), SensorEventListener {
 
@@ -18,6 +26,10 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
     lateinit var sensorManager: SensorManager
     lateinit var sensor: Sensor
+
+    private val service = StepForegroundService()
+
+    private var serviceInit = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +43,9 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     override fun onSensorChanged(event: SensorEvent) {
         if (event.sensor.type == Sensor.TYPE_STEP_COUNTER) {
             binding.stepCount.text = event.values[0].toInt().toString()
+            if (serviceInit) {
+//                service.updateNotification(event.values[0].toInt())
+            }
         }
     }
 
@@ -50,7 +65,12 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
                 Manifest.permission.ACTIVITY_RECOGNITION
             )
             .subscribe {
-                initialize()
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M
+                    && !Settings.canDrawOverlays(this)) {
+                    onObtainingPermissionOverlayWindow()
+                } else {
+                    initialize()
+                }
             }
     }
 
@@ -65,5 +85,27 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         // SENSOR_DELAY_UI : 60,000ms UI 수정에 적합한 속도
         // SENSOR_DELAY_NORMAL : 200,000ms 화면 방향 변화를 모니터링하기에 적합한 속도
         sensorManager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_FASTEST)
+
+        startService()
+    }
+
+    // 다른앱 위에 그리기 설정 페이지로 이동
+    private fun onObtainingPermissionOverlayWindow() {
+        val intent = Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION)
+        intent.data = Uri.fromParts("package", this.packageName, null)
+        permissionActivityResult.launch(intent)
+    }
+
+    private var permissionActivityResult = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        Log.e("TAG", "permissionActivityResult: $result")
+        initialize()
+    }   // callback
+
+    private fun startService() {
+        val intent = Intent(this.applicationContext, service::class.java)
+        startService(intent)
+        serviceInit = true
     }
 }
