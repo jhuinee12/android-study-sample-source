@@ -8,9 +8,12 @@
     <!-- 이하 -->
     <uses-permission android:name="com.google.android.gms.permission.ACTIVITY_RECOGNITION"/>
 
+    <!-- 다른앱 위에 그리기 -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+
     <!-- Google Play에 게시하는 경우, 타겟팅 가능 -->
     <uses-feature android:name="android.hardware.sensor.stepcounter" />
-    <uses-feature android:name="android.hardware.sensor.stepdetector" />
 
     <application
         android:allowBackup="false"
