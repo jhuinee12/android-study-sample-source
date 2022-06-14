@@ -40,17 +40,17 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         checkPermission()
     }
 
-    override fun onResume() {
-        super.onResume()
-        CoroutineScope(Dispatchers.Main).launch {
-            binding.stepCount.text = App.getInstance().getDataStore().step.first().toString()
-        }
-    }
+//    override fun onResume() {
+//        super.onResume()
+//        CoroutineScope(Dispatchers.Main).launch {
+//            binding.stepCount.text = App.getInstance().getDataStore().step.first().toString()
+//        }
+//    }
 
     override fun onSensorChanged(event: SensorEvent) {
-//        if (event.sensor.type == Sensor.TYPE_STEP_COUNTER) {
-//            binding.stepCount.text = event.values[0].toInt().toString()
-//        }
+        if (event.sensor.type == Sensor.TYPE_STEP_COUNTER) {
+            binding.stepCount.text = event.values[0].toInt().toString()
+        }
     }
 
     // 센서의 정확도가 변경되면 호출
