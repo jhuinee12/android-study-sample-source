@@ -29,8 +29,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
 
     private val service = StepForegroundService()
 
-    private var serviceInit = false
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -43,9 +41,6 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     override fun onSensorChanged(event: SensorEvent) {
         if (event.sensor.type == Sensor.TYPE_STEP_COUNTER) {
             binding.stepCount.text = event.values[0].toInt().toString()
-            if (serviceInit) {
-//                service.updateNotification(event.values[0].toInt())
-            }
         }
     }
 
@@ -106,6 +101,5 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
     private fun startService() {
         val intent = Intent(this.applicationContext, service::class.java)
         startService(intent)
-        serviceInit = true
     }
 }
