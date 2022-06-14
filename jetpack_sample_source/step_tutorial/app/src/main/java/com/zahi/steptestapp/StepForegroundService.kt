@@ -51,7 +51,7 @@ class StepForegroundService: Service(), SensorEventListener {
 
         notification=  NotificationCompat.Builder(this, channelID)
             .setContentTitle("만보기 앱")
-            .setSmallIcon(R.mipmap.ic_launcher_foreground)
+            .setSmallIcon(R.drawable.img_step)
             .setContentIntent(pendingIntent)
 
         initialize()
@@ -77,7 +77,6 @@ class StepForegroundService: Service(), SensorEventListener {
 
     override fun onSensorChanged(event: SensorEvent) {
         if (event.sensor.type == Sensor.TYPE_STEP_COUNTER) {
-//            binding.stepCount.text = event.values[0].toInt().toString()
             updateNotification(event.values[0].toInt())
         }
     }
