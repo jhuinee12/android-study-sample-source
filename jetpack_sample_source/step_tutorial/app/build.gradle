@@ -48,4 +48,7 @@ dependencies {
 
     implementation 'io.reactivex.rxjava3:rxkotlin:3.0.1'
     implementation 'com.github.tbruyelle:rxpermissions:0.12'
+
+    implementation 'androidx.datastore:datastore-preferences:1.0.0'
+    implementation 'androidx.datastore:datastore-core:1.0.0'
 }

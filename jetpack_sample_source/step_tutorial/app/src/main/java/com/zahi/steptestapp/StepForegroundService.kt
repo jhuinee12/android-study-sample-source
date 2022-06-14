@@ -10,7 +10,10 @@ import android.hardware.SensorManager
 import android.os.Build
 import android.os.IBinder
 import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 
 class StepForegroundService: Service(), SensorEventListener {
 
@@ -40,8 +43,10 @@ class StepForegroundService: Service(), SensorEventListener {
 
     // 서비스를 시작하게 함
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        notification.setContentText("만보기 측정 중...")
-        startForeground(1, notification.build())    // 0은 동작 안함. 0을 제외한 아무 숫자
+        CoroutineScope(Dispatchers.Main).launch {
+            notification.setContentText("${App.getInstance().getDataStore().step.first()} 걸음")
+            startForeground(1, notification.build())    // 0은 동작 안함. 0을 제외한 아무 숫자
+        }
         return START_NOT_STICKY
     }
 
@@ -78,6 +83,9 @@ class StepForegroundService: Service(), SensorEventListener {
     override fun onSensorChanged(event: SensorEvent) {
         if (event.sensor.type == Sensor.TYPE_STEP_COUNTER) {
             updateNotification(event.values[0].toInt())
+        }
+        CoroutineScope(Dispatchers.Main).launch {
+            App.getInstance().getDataStore().setInt(event.values[0].toInt())
         }
     }
 

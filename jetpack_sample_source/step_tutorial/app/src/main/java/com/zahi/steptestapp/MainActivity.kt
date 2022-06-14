@@ -15,10 +15,12 @@ import android.provider.Settings
 import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import com.tbruyelle.rxpermissions3.Permission
 import com.zahi.steptestapp.databinding.ActivityMainBinding
 import com.tbruyelle.rxpermissions3.RxPermissions
-import java.security.AccessController.checkPermission
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity(), SensorEventListener {
 
@@ -38,10 +40,17 @@ class MainActivity : AppCompatActivity(), SensorEventListener {
         checkPermission()
     }
 
-    override fun onSensorChanged(event: SensorEvent) {
-        if (event.sensor.type == Sensor.TYPE_STEP_COUNTER) {
-            binding.stepCount.text = event.values[0].toInt().toString()
+    override fun onResume() {
+        super.onResume()
+        CoroutineScope(Dispatchers.Main).launch {
+            binding.stepCount.text = App.getInstance().getDataStore().step.first().toString()
         }
+    }
+
+    override fun onSensorChanged(event: SensorEvent) {
+//        if (event.sensor.type == Sensor.TYPE_STEP_COUNTER) {
+//            binding.stepCount.text = event.values[0].toInt().toString()
+//        }
     }
 
     // 센서의 정확도가 변경되면 호출

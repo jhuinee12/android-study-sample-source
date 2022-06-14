@@ -5,18 +5,18 @@ import android.content.Context
 import android.content.Intent
 
 class App : Application() {
-
-    init{
-        instance = this
-
-        val intent = Intent(this.applicationContext, StepForegroundService::class.java)
-        startService(intent)
-    }
+    private lateinit var dataStore: DataStoreModule
 
     companion object {
-        lateinit var instance: App
-        fun ApplicationContext() : Context {
-            return instance.applicationContext
-        }
+        private lateinit var dataStoreApplication: App
+        fun getInstance(): App = dataStoreApplication
     }
+
+    override fun onCreate() {
+        super.onCreate()
+        dataStoreApplication = this
+        dataStore = DataStoreModule(this)
+    }
+
+    fun getDataStore(): DataStoreModule = dataStore
 }
