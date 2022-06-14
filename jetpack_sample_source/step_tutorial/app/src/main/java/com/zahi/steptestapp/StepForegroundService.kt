@@ -52,7 +52,7 @@ class StepForegroundService: Service(), SensorEventListener {
 
     private fun createNotification() {
         val notificationIntent = Intent(this, MainActivity::class.java)
-        val pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0)
+        val pendingIntent = PendingIntent.getActivity(this, 0, notificationIntent, PendingIntent.FLAG_MUTABLE)
 
         notification=  NotificationCompat.Builder(this, channelID)
             .setContentTitle("만보기 앱")
