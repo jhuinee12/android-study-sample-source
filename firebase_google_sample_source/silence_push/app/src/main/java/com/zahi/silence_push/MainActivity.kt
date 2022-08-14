@@ -20,7 +20,7 @@ import com.zahi.silence_push.databinding.ActivityMainBinding
  *
  * header
  *  "Content-Type" : "application/json"
- *  "Authorization" : "key=AAAAzvqJu1k:APA91bFSfl-Ho00qbdJQJGu1yx62rpGcsCL5tDqMGY2Iy95fUBXUuxUJxSu02VQoaJNZzQk2VgDAU6ptgBMcF0Uf4U9cp1I5pHMsS_FfgdqdpZynafKdF7OP6mSuoQRYTaj4qfLgFvJq"
+ *  "Authorization" : "key=server key"
  *
  * body
  * {
