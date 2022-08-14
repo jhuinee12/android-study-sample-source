@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "888966593369",
+    "project_id": "silencepush",
+    "storage_bucket": "silencepush.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:888966593369:android:bbac9f1bd32e1f26dd2a48",
+        "android_client_info": {
+          "package_name": "com.zahi.silence_push"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "888966593369-991pv071gd2ooq7asdvn36gabtohhlbj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.zahi.silence_push",
+            "certificate_hash": "874d54676e66ef0acb9f050d178ed89127bf70bf"
+          }
+        },
+        {
+          "client_id": "888966593369-smaitpg1oflpmgs6vgnfcks2aln19g04.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBT1jPLoE0t2JRRo0seGbauJ-jngKx7QOg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "888966593369-smaitpg1oflpmgs6vgnfcks2aln19g04.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
