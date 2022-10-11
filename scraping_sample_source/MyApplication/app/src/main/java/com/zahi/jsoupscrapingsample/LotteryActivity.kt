@@ -36,8 +36,8 @@ class LotteryActivity : AppCompatActivity() {
 
                 val elements : Elements = doc.select("table tbody tr")
                 run elemLoop@{
-                    elements.forEachIndexed{ index, elem ->
-                        val element = elem.select("td")
+                    elements.forEach{
+                        val element = it.select("td")
                         val rank = element[0].text()
                         val sumPrize = element[1].text()
                         val people = element[2].text()
