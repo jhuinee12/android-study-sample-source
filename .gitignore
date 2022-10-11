@@ -32,3 +32,5 @@ firebase_google_sample_source/SilencePush/.gradle/
 firebase_google_sample_source/SilencePush/.idea/
 firebase_google_sample_source/silence_push/.idea/
 basic_sample_source/scrollview_inside_recyclerview/.idea/
+scraping_sample_source/MyApplication/.idea/
+scraping_sample_source/MyApplication/app/build/
