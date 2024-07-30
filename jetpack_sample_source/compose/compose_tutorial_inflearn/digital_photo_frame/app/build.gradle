@@ -29,6 +29,7 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+        freeCompilerArgs += "-Xdisable-optimization" // Compiler 에러 임시 방편
     }
 }
 
@@ -37,7 +38,25 @@ dependencies {
     implementation libs.androidx.core.ktx
     implementation libs.androidx.appcompat
     implementation libs.material
+    implementation libs.androidx.activity
     testImplementation libs.junit
     androidTestImplementation libs.androidx.junit
     androidTestImplementation libs.androidx.espresso.core
+
+    // Compose
+    implementation libs.androidx.ui
+    implementation libs.androidx.material
+    implementation libs.androidx.ui.tooling
+    implementation libs.androidx.activity.compose
+
+    // Pager
+    implementation libs.accompanist.pager
+    implementation libs.accompanist.pager.indicators
+
+    // coil
+    implementation libs.coil.compose
+
+    // ViewModel
+    implementation libs.androidx.lifecycle.viewmodel.compose
+
 }
