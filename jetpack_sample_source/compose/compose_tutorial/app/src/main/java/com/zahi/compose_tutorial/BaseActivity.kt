@@ -59,8 +59,18 @@ abstract class BaseActivity : AppCompatActivity() {
 	}
 
 	@Composable
+	// Composable의 함수는 대문자로 시작
 	fun Greeting(name: String) {
 		Text(text = "Hello $name!")
+	}
+
+	@Preview(showBackground = true)
+	@Composable
+	// 기존 함수와 별개로 미리보기 용
+	fun TestPreview() {
+		ThisTheme {
+			Greeting(name = "헬로웅")
+		}	
 	}
 
 	private fun lightColors(): Colors {

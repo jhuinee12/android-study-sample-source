@@ -36,4 +36,19 @@ scraping_sample_source/MyApplication/.idea/
 scraping_sample_source/MyApplication/app/build/
 jetpack_sample_source/compose/SunflowerwithCompose/
 jetpack_sample_source/compose/compose_tutorial/.idea/
+<<<<<<< HEAD
 ml_kit_sample/.idea/
+=======
+<<<<<<< HEAD
+sns_sample_source/SNSLogin/.idea/
+=======
+jetpack_sample_source/compose/ComposeTutorialFatCalc/.idea/
+>>>>>>> inflearn_fat_calc
+jetpack_sample_source/compose/bmi_project/.idea/
+jetpack_sample_source/compose/composeTutorialStopwatch/.idea/
+jetpack_sample_source/compose/.idea/
+jetpack_sample_source/ComposeTutorialDigitalFrame/.idea/
+jetpack_sample_source/compose/compose_tutorial_inflearn/ComposeTutorialFatCalc/.idea/
+jetpack_sample_source/compose/compose_tutorial_inflearn/myWebBrowser/.idea/
+jetpack_sample_source/compose/compose_tutorial_inflearn/digital_photo_frame/.idea/
+>>>>>>> inflearncomposeui/digital_frame
